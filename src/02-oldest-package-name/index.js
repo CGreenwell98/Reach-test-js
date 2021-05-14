@@ -38,7 +38,7 @@ const body = {
 }
 
 const oldestName = content => {
-  const packageInfo = {
+  let packageInfo = {
     name: '',
     date: Date.now(),
   };
@@ -46,8 +46,7 @@ const oldestName = content => {
     const date = Date.parse(item.package.date);
     const name = item.package.name;
     if (date < packageInfo.date) {
-      packageInfo.name = name;
-      packageInfo.date = date;
+      packageInfo = { name, date };
     }
   });
   return packageInfo.name;
